@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cupcake Magdalena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+     <a class="navbar-brand" href="/">Cupcake Magdalena</a>
+      <ul class="d-flex">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Privacy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+   </div>
+  </nav>
+<div class="container">
+  <div class="d-flex flex-row bd-highlight mb-3" style="flex-wrap: wrap;" id="notesContainer">
+    {% for post in posts %}
+    <div class="p-2 bd-highlight">
+          <div class="card border-secondary" style="max-width: 15rem; min-width: 15rem">
+            <div class="card-body pt-0">
+              <a href="/posts/{{post.id}}">
+              <img class="card-img-top" src="/static/images/{{post.thumbnail}}" alt="Cupcake!">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <h4 class="card-title">{{post.title}}</h4>
+              </a>
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<script src="/static/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

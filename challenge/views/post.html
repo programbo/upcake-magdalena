@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cupcake Magdalena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+     <a class="navbar-brand" href="/">Cupcake Magdalena</a>
+      <ul class="d-flex">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Privacy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+   </div>
+  </nav>
+<div class="container">
+  <div class="d-flex flex-row" style="flex-wrap: wrap; justify-content: center;">
+    {% if error %}
+      <div class="p-2">
+            <div class="card border-secondary" style="max-width: 30rem; min-width: 20rem">
+              <div class="card-body pt-0">
+                <h4 class="card-title">ERROR</h4>
+                <p class="card-text">Opps! Something went wrong!</p>
+              </div>
+            </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="row">
+      <div class="col">
+        <div class="p-2">
+          <div class="card border-secondary" style="max-width: 20rem; min-width: 20rem">
+            <div class="card-body pt-0">
+              <img class="card-img-top" src="/static/images/{{post.thumbnail}}" alt="Post unavailable!">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <h4 class="card-title">{{post.title}}</h4>
+              <p>{{post.price}} Pack of 10</p>
+              <p class="card-text">{% if post.content_es %} {{post.content_es}} {% else %} {{post.content_en}} {% endif %}</p>
+            </div>
+          </div>
+    </div>
+      </div>
+      <div class="col" style="max-width: 20rem; min-width: 20rem">
+        <h5 style="margin-top: 50px; margin-bottom: 10px;">Reviews</h5>
+        <div class="list-group" style="max-width: 20rem; min-width: 20rem;">
+          {% for review in reviews %}
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{ review.name }}</h5>
+            </div>
+            <p class="mb-1">{{ review.review }}</p>
+          </a>
+         {% endfor %}
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5>Add a review:</h5>
+            </div>
+            <p class="mb-1">Name: <input class="form-group w-100" type="text" id="name"></p>
+            <p class="mb-1">Review: <input class="form-group w-100" type="text" id="review"></p>
+            <input type="hidden" id="post-id" value="{{ post.id }}">
+            <button class="btn btn-primary" id="reviewBtn">Submit review</button>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <p class="alert alert-info hidden" id="resp-msg"></p>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/reviews.js"></script>
+</body>
+</html>
+
